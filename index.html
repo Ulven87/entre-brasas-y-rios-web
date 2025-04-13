@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link 1  href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <title>Entre Brasas y Ríos - Asados Patagones - Puerto Aysén</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#inicio" class="header-logo-link"> <img src="images/logo1.png" alt="Logo Entre Brasas y Ríos" class="header-logo"> 
+            </a>
+            <nav>
+                <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <nav> 
+                    </nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#cocina">Nuestra Cocina</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+        
+            <video class="hero-video" autoplay loop muted playsinline poster="images/poster-placeholder.jpg"> 
+                <source src="videos/videoHero.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5. </video>
+    
+        </section>
+
+        <section id="nosotros" class="content-section">
+            <div class="container">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos más que un restaurante; somos un homenaje a las tradiciones patagonas. En Entre Brasas y Ríos, cada corte de carne se selecciona con esmero y se cocina lentamente sobre brasas, tal como lo hacían nuestros ancestros, respetando el tiempo y el fuego para lograr sabores profundos y texturas inigualables. Ubicados en la hermosa ciudad de Puerto Aysén, Región de Aysén, te invitamos a compartir nuestra pasión por el buen comer en un ambiente rústico y acogedor.</p>
+                </div>
+        </section>
+
+        <section id="cocina" class="content-section bg-dark">
+            <div class="container">
+                <h3>Nuestra Cocina</h3>
+                <p>Nos especializamos en el arte del asado patagón. El cordero al palo, las parrilladas con diversos cortes y nuestras preparaciones a la brasa son el corazón de nuestra propuesta. Utilizamos ingredientes locales y técnicas tradicionales para ofrecerte una experiencia culinaria auténtica.</p>
+                <div class="gallery swiper-container"> 
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/slider2.jpg" alt="Asado al palo cocinándose lentamente">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/slider1.jpg" alt="Mesa de matrimonio decorada"> 
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/slider3.jpg" alt="Mesa con variedad de ensaladas frescas">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/slider4.jpg" alt="Vista exterior del restaurante Entre Brasas y Ríos">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/slider5.jpg" alt="Asador trabajando en la parrilla con brasas">
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="content-section">
+            <div class="container">
+                <h3>Contacto y Ubicación</h3>
+                <p>¿Listo para vivir la experiencia Entre Brasas y Ríos? Contáctanos o visítanos en Puerto Aysén.</p>
+                    <form action="https://formspree.io/f/mvgkwqjq" method="POST" accept-charset="UTF-8">
+                    
+                        <input type="hidden" name="_subject" value="Nuevo Mensaje - Web Entre Brasas y Ríos">
+                    
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <span class="error-message" id="error-nombre"></span> </div>
+                    
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="error-email"></span> </div>
+                    
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje / Reserva (indicar fecha, hora, personas):</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                            <span class="error-message" id="error-mensaje"></span> </div>
+                        
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    
+                    </form>
+
+                <div class="contact-info">
+                     <p><strong>Dirección:</strong> Km 6, Camino a Lago Riesco (X-550), Puerto Aysén, Región de Aysén, Chile</p>
+                     <p><strong>Teléfono:</strong> +56 9 5371 1658</p>
+                     </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Entre Brasas y Ríos. Todos los derechos reservados.</p>
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
+</html>
