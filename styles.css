@@ -63,7 +63,7 @@ ul {
 /* Estilos del Encabezado (Header)   */
 /* ================================= */
 header {
-    background-color: #f8f8f8; /* Blanco Roto */
+    background-color: blue; /* Blanco Roto */
     padding: 1rem 0; 
     border-bottom: 3px solid #a04f33; /* Terracota */
     
