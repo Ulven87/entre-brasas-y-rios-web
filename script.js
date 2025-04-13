@@ -5,16 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Selecciones Comunes ---
     // CORREGIDO: Selector más específico basado en el HTML real
     const navLinks = document.querySelectorAll('header nav > ul > li > a[href^="#"]');
-    console.log(`Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${navLinks.length}`); // Verifica si ahora encuentra 4
+    console.log(`Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${navLinks.length}`);
 
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     // Mantenemos el selector original de "La Base" para el menú móvil
-    const navElement = document.querySelector('header nav'); // Renombrado para claridad
+    const navElement = document.querySelector('header nav');
 
     // --- Variables de Estado (Declaradas Correctamente - CORREGIDO) ---
     let currentlyActiveLink = null;
-    let isScrollingAfterClick = false; // Bandera para scroll post-click
-    let scrollTimeoutId = null; // ID del timeout
+    let isScrollingAfterClick = false;
+    let scrollTimeoutId = null;
 
     // --- Código Scroll Suave (CON resaltado inmediato y bandera - CORREGIDO) ---
     if (navLinks.length > 0) {
@@ -24,15 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const clickedLink = this;
                 const href = clickedLink.getAttribute('href');
-                // console.log("Click en enlace:", href, "- Aplicando clase activa.");
-
-                // --- Manejo INMEDIATO de active-link al hacer CLICK (AÑADIDO) ---
                 navLinks.forEach(lnk => lnk.classList.remove('active-link'));
                 clickedLink.classList.add('active-link');
                 currentlyActiveLink = clickedLink;
-                // --- Fin Manejo INMEDIATO ---
-
-                // --- INICIO: Manejo de Bandera para Scroll Post-Click (AÑADIDO Y COMPLETO) ---
                 isScrollingAfterClick = true;
                 if (scrollTimeoutId) {
                     clearTimeout(scrollTimeoutId);
@@ -40,11 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollTimeoutId = setTimeout(() => {
                     isScrollingAfterClick = false;
                     scrollTimeoutId = null;
-                    // console.log("Timeout de scroll post-click finalizado.");
                 }, 1000); // 1 segundo
-                // --- FIN: Manejo de Bandera ---
-
-                // Scroll suave (lógica original tuya)
                 if (href === '#inicio') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
@@ -58,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                  // Cerrar menú móvil si está activo (usa navElement de tu versión base)
-                 // NOTA: Asume que el CSS oculta el UL basado en la clase en NAV
                  if (navElement && navElement.classList.contains('mobile-nav-active')) {
                     navElement.classList.remove('mobile-nav-active');
                     if (mobileMenuButton) {
@@ -69,32 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     } else {
-         // Si este warning aparece ahora, el nuevo selector también falló.
          console.warn("ALERTA: No se encontraron enlaces de navegación con el selector 'header nav > ul > li > a[href^=\"#\"]'. Revisa la estructura HTML del header.");
     }
     // --- Fin Código Scroll Suave ---
 
-
-    // --- CÓDIGO PARA MENÚ MÓVIL (Selector Original de "La Base") ---
-    // Usa navElement definido arriba
+    // --- CÓDIGO PARA MENÚ MÓVIL ---
     if (mobileMenuButton && navElement) {
-        // console.log("Adjuntando listener al botón del menú móvil (v18)."); // Log opcional
         mobileMenuButton.addEventListener('click', function() {
-            // console.log("¡Botón de menú móvil clickeado! (v18)"); // Log opcional
-            navElement.classList.toggle('mobile-nav-active'); // Usa navElement
-            const isExpanded = navElement.classList.contains('mobile-nav-active'); // Usa navElement
+            navElement.classList.toggle('mobile-nav-active');
+            const isExpanded = navElement.classList.contains('mobile-nav-active');
             this.setAttribute('aria-expanded', isExpanded);
             this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
         });
     } else {
         if (!mobileMenuButton) console.error("Error Crítico: Botón de menú móvil no encontrado.");
-        // Mantenemos el log original de "La Base"
         if (!navElement) console.error("Error Crítico: Elemento <nav> no encontrado.");
     }
     // --- FIN CÓDIGO PARA MENÚ MÓVIL ---
 
-    // --- CÓDIGO PARA VALIDACIÓN DE FORMULARIO (Tu código original) ---
-    //const contactForm = document.getElementById('contact-form');
+    // --- CÓDIGO PARA VALIDACIÓN DE FORMULARIO ---
     const contactForm = document.querySelector('form');
     const nombreInput = document.getElementById('nombre');
     const emailInput = document.getElementById('email');
@@ -118,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- FIN CÓDIGO PARA VALIDACIÓN DE FORMULARIO ---
 
-    // --- CÓDIGO PARA INICIALIZAR SWIPER (Tu código original) ---
+    // --- CÓDIGO PARA INICIALIZAR SWIPER ---
     const swiperContainer = document.querySelector('.gallery.swiper-container');
     if (swiperContainer) {
       try {
@@ -126,29 +108,24 @@ document.addEventListener('DOMContentLoaded', function() {
           loop: true,
           pagination: { el: '.swiper-pagination', clickable: true, },
           navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
-           breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 30 } } // Añadido de versiones anteriores
+           breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }
         });
       } catch (error) { console.error("Error al inicializar Swiper:", error); }
     }
     // --- FIN CÓDIGO PARA INICIALIZAR SWIPER ---
 
-    // --- CÓDIGO PARA LINK ACTIVO POR SCROLL (Variables Corregidas v18) ---
+    // --- CÓDIGO PARA LINK ACTIVO POR SCROLL ---
     const sections = document.querySelectorAll('main section[id]');
-
-    // Usa navLinks definido arriba
     if (sections.length > 0 && navLinks.length > 0) {
-
         const observerOptions = {
             root: null,
-            // Mantenemos el rootMargin fijo de tu versión base
             rootMargin: '-130px 0px -30% 0px',
-            threshold: 0.0 // Mantenemos 0.0 para detectar cualquier intersección
+            threshold: 0.0
         };
 
         const observerCallback = (entries, observer) => {
-            // Usa la bandera definida y actualizada arriba (CORREGIDO)
             if (isScrollingAfterClick) {
-                return; // Ignora si estamos scrolleando por click reciente
+                return;
             }
 
             let bestEntry = null;
@@ -158,22 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const currentIntersectionRatio = entry.intersectionRatio;
-                    // Calcular la distancia al top del viewport.
                     const rect = entry.target.getBoundingClientRect();
                     const distanceFromTop = Math.abs(rect.top);
 
-                    if (currentIntersectionRatio > 0.5) { // Solo consideramos secciones con más del 50% visible
-                      
-                        if (currentIntersectionRatio > maxIntersectionRatio) {
-                            // Si hay una mayor interseccion
-                            maxIntersectionRatio = currentIntersectionRatio;
-                            bestEntry = entry;
-                            minDistanceFromTop = distanceFromTop;
-                        } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
-                            // si hay la misma interseccion, priorizar la que esta mas cerca del top
-                            bestEntry = entry;
-                            minDistanceFromTop = distanceFromTop;
-                        }
+                    if (currentIntersectionRatio > maxIntersectionRatio) {
+                        maxIntersectionRatio = currentIntersectionRatio;
+                        bestEntry = entry;
+                        minDistanceFromTop = distanceFromTop;
+                    } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
+                         bestEntry = entry;
+                         minDistanceFromTop = distanceFromTop;
                     }
                 }
             });
@@ -192,36 +163,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         sections.forEach(section => observer.observe(section));
 
-        // --- Función para manejar scroll cerca del tope (CON chequeo de bandera) ---
         const handleScrollTop = () => {
-            // Usa la bandera definida y actualizada arriba (CORREGIDO)
             if (isScrollingAfterClick) {
-                return; // Ignora si estamos scrolleando por click reciente
+                return;
             }
-
-            // Usa navLinks y currentlyActiveLink definidos arriba (CORREGIDO)
-            const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]'); // Selector corregido
-            if (window.scrollY < 100 && inicioLink && inicioLink !== currentlyActiveLink) {
+            const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]');
+            if (window.scrollY < 50 && inicioLink && inicioLink !== currentlyActiveLink) {
                 navLinks.forEach(link => link.classList.remove('active-link'));
                 inicioLink.classList.add('active-link');
                 currentlyActiveLink = inicioLink;
             }
         };
-
-        // --- Estado Inicial Simplificado ---
         handleScrollTop(); // Llama al cargar
-
-        // Listener para scroll
         window.addEventListener('scroll', handleScrollTop, { passive: true });
-
     } else {
-        // Mensajes si faltan secciones o links (ahora con el selector corregido)
         if (sections.length === 0) console.log("No se encontraron secciones con ID para observar.");
         if (navLinks.length === 0) console.log("ALERTA v18: No se encontraron enlaces de navegación con el selector corregido. Revisa HTML.");
     }
     // --- FIN CÓDIGO PARA LINK ACTIVO POR SCROLL ---
 
-    // --- CÓDIGO PARA ACTUALIZAR EL AÑO EN EL FOOTER (AÑADIDO) ---
+    // --- CÓDIGO PARA ACTUALIZAR EL AÑO EN EL FOOTER ---
     const currentYearSpan = document.getElementById('current-year');
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
