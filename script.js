@@ -153,32 +153,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             let bestEntry = null;
-            let maxIntersectionRatio = 0;
-            let minDistanceFromTop = Infinity;
+            let minDistanceFromCenter = Infinity;
         
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const currentIntersectionRatio = entry.intersectionRatio;
-                    // Calcular la distancia al top del viewport.
                     const rect = entry.target.getBoundingClientRect();
-                    const distanceFromTop = Math.abs(rect.top);
+                    const viewportHeight = window.innerHeight;
+                    const sectionCenter = rect.top + rect.height / 2;
+                    const viewportCenter = viewportHeight / 2;
+                    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
         
-                    if (currentIntersectionRatio > maxIntersectionRatio) {
-                        // Si hay una mayor interseccion
-                        maxIntersectionRatio = currentIntersectionRatio;
+                    console.log(`Sección: ${entry.target.id}, Rect: ${rect.top},${rect.height}, Centro Sección: ${sectionCenter}, Distancia al Centro: ${distanceFromCenter}`);
+        
+                    if (distanceFromCenter < minDistanceFromCenter) {
+                        minDistanceFromCenter = distanceFromCenter;
                         bestEntry = entry;
-                        minDistanceFromTop = distanceFromTop;
-                    } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
-                        // si hay la misma interseccion, priorizar la que esta mas cerca del top
-                        bestEntry = entry;
-                        minDistanceFromTop = distanceFromTop;
                     }
                 }
             });
-        
+            
             if (bestEntry) {
                 const id = bestEntry.target.getAttribute('id');
                 const correspondingLink = document.querySelector(`header nav > ul > li > a[href="#${id}"]`);
+        
+                console.log(`Sección más visible: ${id}`);
         
                 if (correspondingLink && correspondingLink !== currentlyActiveLink) {
                     navLinks.forEach(link => link.classList.remove('active-link'));
@@ -187,6 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+        
+
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         sections.forEach(section => observer.observe(section));
 
