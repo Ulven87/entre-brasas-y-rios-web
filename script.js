@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Código Scroll Suave (CON resaltado inmediato y bandera - CORREGIDO) ---
     if (navLinks.length > 0) {
-        // Usa navLinks definido arriba
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollTimeoutId = setTimeout(() => {
                     isScrollingAfterClick = false;
                     scrollTimeoutId = null;
-                }, 1000); // 1 segundo
+                }, 1000); 
                 if (href === '#inicio') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
 
-                 // Cerrar menú móvil si está activo (usa navElement de tu versión base)
                  if (navElement && navElement.classList.contains('mobile-nav-active')) {
                     navElement.classList.remove('mobile-nav-active');
                     if (mobileMenuButton) {
@@ -168,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]');
-            if (window.scrollY < 50 && inicioLink && inicioLink !== currentlyActiveLink) {
+             if (window.scrollY === 0 && inicioLink && inicioLink !== currentlyActiveLink) {
                 navLinks.forEach(link => link.classList.remove('active-link'));
                 inicioLink.classList.add('active-link');
                 currentlyActiveLink = inicioLink;
