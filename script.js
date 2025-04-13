@@ -122,31 +122,34 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         const observerCallback = (entries, observer) => {
+            console.log("Entrando en observerCallback");
             if (isScrollingAfterClick) {
                 return;
             }
+            console.log("observerCallback - Intersecciones:", entries.length);
 
             let bestEntry = null;
             let maxIntersectionRatio = 0;
             let minDistanceFromTop = Infinity;
 
             entries.forEach(entry => {
+                 console.log(`  - Sección intersectando: ${entry.target.id}, isIntersecting: ${entry.isIntersecting}`);
                 if (entry.isIntersecting) {
                     const currentIntersectionRatio = entry.intersectionRatio;
                     const rect = entry.target.getBoundingClientRect();
                     const distanceFromTop = Math.abs(rect.top);
+                    console.log(`    - currentIntersectionRatio: ${currentIntersectionRatio}, distanceFromTop: ${distanceFromTop}`);
 
-                     if (currentIntersectionRatio > 0.3) { // Solo consideramos secciones con más del 30% visible
-                      
+                    if (currentIntersectionRatio > 0.3) {
                         if (currentIntersectionRatio > maxIntersectionRatio) {
-                            // Si hay una mayor interseccion
                             maxIntersectionRatio = currentIntersectionRatio;
                             bestEntry = entry;
                             minDistanceFromTop = distanceFromTop;
+                             console.log(`    - Nuevo bestEntry: ${bestEntry.target.id}, maxIntersectionRatio: ${maxIntersectionRatio}, minDistanceFromTop: ${minDistanceFromTop}`);
                         } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
-                            // si hay la misma interseccion, priorizar la que esta mas cerca del top
                             bestEntry = entry;
                             minDistanceFromTop = distanceFromTop;
+                            console.log(`    - Nuevo bestEntry por cercanía al top: ${bestEntry.target.id}, maxIntersectionRatio: ${maxIntersectionRatio}, minDistanceFromTop: ${minDistanceFromTop}`);
                         }
                     }
                 }
@@ -155,18 +158,38 @@ document.addEventListener('DOMContentLoaded', function() {
             if (bestEntry) {
                 const id = bestEntry.target.getAttribute('id');
                 const correspondingLink = document.querySelector(`header nav > ul > li > a[href="#${id}"]`);
+                console.log(`  - bestEntry: ${id}`);
 
-                if (correspondingLink && correspondingLink !== currentlyActiveLink) {
-                    navLinks.forEach(link => link.classList.remove('active-link'));
-                    correspondingLink.classList.add('active-link');
-                    currentlyActiveLink = correspondingLink;
+                if (correspondingLink) {
+                  console.log(`  - Enlace correspondiente encontrado: ${correspondingLink.getAttribute('href')}`);
+                    if (correspondingLink !== currentlyActiveLink) {
+                         console.log(`  - Actualizando currentlyActiveLink y clases CSS`);
+                        navLinks.forEach(link => {
+                            console.log(`    - Removiendo active-link de: ${link.getAttribute('href')}`);
+                            link.classList.remove('active-link');
+                        });
+                        console.log(`    - Añadiendo active-link a: ${correspondingLink.getAttribute('href')}`);
+                        correspondingLink.classList.add('active-link');
+                        currentlyActiveLink = correspondingLink;
+                         console.log(`  - currentlyActiveLink actualizado a: ${currentlyActiveLink.getAttribute('href')}`);
+                    } else {
+                       console.log("  - El enlace actual ya esta activo");
+                    }
+                } else {
+                     console.log("  - No se encontró el enlace correspondiente");
                 }
+            } else {
+                console.log("  - No se encontró bestEntry");
             }
         };
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(section => {
+          console.log("Observando la sección:", section.id);
+          observer.observe(section);
+        });
 
         const handleScrollTop = () => {
+             console.log("Entrando en handleScrollTop");
             if (isScrollingAfterClick) {
                 return;
             }
