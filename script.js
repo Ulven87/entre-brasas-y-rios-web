@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
             rootMargin: '-130px 0px -30% 0px',
             threshold: 0.0 // Mantenemos 0.0 para detectar cualquier intersección
         };
-        // console.log("IntersectionObserver Options (v18):", observerOptions); // Log Opcional
 
         const observerCallback = (entries, observer) => {
             // Usa la bandera definida y actualizada arriba (CORREGIDO)
@@ -153,31 +152,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             let bestEntry = null;
-            let minDistanceFromCenter = Infinity;
-        
+            let maxIntersectionRatio = 0;
+            let minDistanceFromTop = Infinity;
+
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    const currentIntersectionRatio = entry.intersectionRatio;
+                    // Calcular la distancia al top del viewport.
                     const rect = entry.target.getBoundingClientRect();
-                    const viewportHeight = window.innerHeight;
-                    const sectionCenter = rect.top + rect.height / 2;
-                    const viewportCenter = viewportHeight / 2;
-                    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
-        
-                    console.log(`Sección: ${entry.target.id}, Rect: ${rect.top},${rect.height}, Centro Sección: ${sectionCenter}, Distancia al Centro: ${distanceFromCenter}`);
-        
-                    if (distanceFromCenter < minDistanceFromCenter) {
-                        minDistanceFromCenter = distanceFromCenter;
-                        bestEntry = entry;
+                    const distanceFromTop = Math.abs(rect.top);
+
+                    if (currentIntersectionRatio > 0.5) { // Solo consideramos secciones con más del 50% visible
+                      
+                        if (currentIntersectionRatio > maxIntersectionRatio) {
+                            // Si hay una mayor interseccion
+                            maxIntersectionRatio = currentIntersectionRatio;
+                            bestEntry = entry;
+                            minDistanceFromTop = distanceFromTop;
+                        } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
+                            // si hay la misma interseccion, priorizar la que esta mas cerca del top
+                            bestEntry = entry;
+                            minDistanceFromTop = distanceFromTop;
+                        }
                     }
                 }
             });
-            
+
             if (bestEntry) {
                 const id = bestEntry.target.getAttribute('id');
                 const correspondingLink = document.querySelector(`header nav > ul > li > a[href="#${id}"]`);
-        
-                console.log(`Sección más visible: ${id}`);
-        
+
                 if (correspondingLink && correspondingLink !== currentlyActiveLink) {
                     navLinks.forEach(link => link.classList.remove('active-link'));
                     correspondingLink.classList.add('active-link');
@@ -185,8 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
-        
-
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         sections.forEach(section => observer.observe(section));
 
@@ -200,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Usa navLinks y currentlyActiveLink definidos arriba (CORREGIDO)
             const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]'); // Selector corregido
             if (window.scrollY < 100 && inicioLink && inicioLink !== currentlyActiveLink) {
-                // console.log("Activando 'Inicio' por scroll top (v18)."); // Log opcional
                 navLinks.forEach(link => link.classList.remove('active-link'));
                 inicioLink.classList.add('active-link');
                 currentlyActiveLink = inicioLink;
