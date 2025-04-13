@@ -136,13 +136,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     const rect = entry.target.getBoundingClientRect();
                     const distanceFromTop = Math.abs(rect.top);
 
-                    if (currentIntersectionRatio > maxIntersectionRatio) {
-                        maxIntersectionRatio = currentIntersectionRatio;
-                        bestEntry = entry;
-                        minDistanceFromTop = distanceFromTop;
-                    } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
-                         bestEntry = entry;
-                         minDistanceFromTop = distanceFromTop;
+                     if (currentIntersectionRatio > 0.3) { // Solo consideramos secciones con más del 30% visible
+                      
+                        if (currentIntersectionRatio > maxIntersectionRatio) {
+                            // Si hay una mayor interseccion
+                            maxIntersectionRatio = currentIntersectionRatio;
+                            bestEntry = entry;
+                            minDistanceFromTop = distanceFromTop;
+                        } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
+                            // si hay la misma interseccion, priorizar la que esta mas cerca del top
+                            bestEntry = entry;
+                            minDistanceFromTop = distanceFromTop;
+                        }
                     }
                 }
             });
