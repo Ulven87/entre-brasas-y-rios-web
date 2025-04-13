@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM Cargado. Iniciando script v18 (LaBase CorrectSelectorsFix).");
+    console.log("DOM Cargado. Iniciando script v19 (ScrollMagic).");
 
     // --- Selecciones Comunes ---
     // CORREGIDO: Selector más específico basado en el HTML real
@@ -112,72 +112,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- FIN CÓDIGO PARA INICIALIZAR SWIPER ---
 
-    // --- CÓDIGO PARA LINK ACTIVO POR SCROLL ---
+    // --- CÓDIGO PARA LINK ACTIVO POR SCROLL (CON ScrollMagic) ---
+    // Inicializar el controlador de ScrollMagic
+    const controller = new ScrollMagic.Controller();
+
+    // Seleccionar las secciones y los enlaces de navegación
     const sections = document.querySelectorAll('main section[id]');
-    if (sections.length > 0 && navLinks.length > 0) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '-130px 0px -30% 0px',
-            threshold: 0.0
-        };
 
-        const observerCallback = (entries, observer) => {
-            if (isScrollingAfterClick) {
-                return;
-            }
+    // Crear una escena para cada sección
+    sections.forEach(section => {
+        // Crear la escena
+        const scene = new ScrollMagic.Scene({
+            triggerElement: section, // El elemento que activa la escena
+            triggerHook: 0.1, // Cuando el 10% del elemento sea visible
+            duration: section.offsetHeight //La duración de la escena es la altura del elemento
+        })
+        .addTo(controller) // Añadir la escena al controlador
+        //.addIndicators() // Descomenta esta línea para ver las líneas de referencia
+        .on('enter', () => {
+          const id = section.getAttribute('id');
+          const correspondingLink = document.querySelector(`header nav > ul > li > a[href="#${id}"]`);
+          if (correspondingLink && correspondingLink !== currentlyActiveLink) {
+            navLinks.forEach(link => link.classList.remove('active-link'));
+            correspondingLink.classList.add('active-link');
+            currentlyActiveLink = correspondingLink;
+          }
+        });
+    });
+    const handleScrollTop = () => {
+        if (isScrollingAfterClick) {
+            return;
+        }
+        const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]');
+        if (window.scrollY === 0 && inicioLink && inicioLink !== currentlyActiveLink) {
+            navLinks.forEach(link => link.classList.remove('active-link'));
+            inicioLink.classList.add('active-link');
+            currentlyActiveLink = inicioLink;
+        }
+    };
+    handleScrollTop(); // Llama al cargar
+    window.addEventListener('scroll', handleScrollTop, { passive: true });
 
-            let bestEntry = null;
-            let maxIntersectionRatio = 0;
-            let minDistanceFromTop = Infinity;
-
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const currentIntersectionRatio = entry.intersectionRatio;
-                    const rect = entry.target.getBoundingClientRect();
-                    const distanceFromTop = Math.abs(rect.top);
-
-                    if (currentIntersectionRatio > maxIntersectionRatio) {
-                        maxIntersectionRatio = currentIntersectionRatio;
-                        bestEntry = entry;
-                        minDistanceFromTop = distanceFromTop;
-                    } else if (currentIntersectionRatio === maxIntersectionRatio && distanceFromTop < minDistanceFromTop) {
-                        bestEntry = entry;
-                        minDistanceFromTop = distanceFromTop;
-                    }
-                }
-            });
-
-            if (bestEntry) {
-                const id = bestEntry.target.getAttribute('id');
-                const correspondingLink = document.querySelector(`header nav > ul > li > a[href="#${id}"]`);
-                 if (correspondingLink && correspondingLink !== currentlyActiveLink) {
-                    navLinks.forEach(link => link.classList.remove('active-link'));
-                    correspondingLink.classList.add('active-link');
-                    currentlyActiveLink = correspondingLink;
-                }
-            }
-        };
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sections.forEach(section => observer.observe(section));
-
-        const handleScrollTop = () => {
-            if (isScrollingAfterClick) {
-                return;
-            }
-            const inicioLink = document.querySelector('header nav > ul > li > a[href="#inicio"]');
-            if (window.scrollY === 0 && inicioLink && inicioLink !== currentlyActiveLink) {
-                navLinks.forEach(link => link.classList.remove('active-link'));
-                inicioLink.classList.add('active-link');
-                currentlyActiveLink = inicioLink;
-            }
-        };
-        handleScrollTop(); // Llama al cargar
-        window.addEventListener('scroll', handleScrollTop, { passive: true });
-    } else {
-        if (sections.length === 0) console.log("No se encontraron secciones con ID para observar.");
-        if (navLinks.length === 0) console.log("ALERTA v18: No se encontraron enlaces de navegación con el selector corregido. Revisa HTML.");
-    }
-    // --- FIN CÓDIGO PARA LINK ACTIVO POR SCROLL ---
+    // --- FIN CÓDIGO PARA LINK ACTIVO POR SCROLL (CON ScrollMagic) ---
 
     // --- CÓDIGO PARA ACTUALIZAR EL AÑO EN EL FOOTER ---
     const currentYearSpan = document.getElementById('current-year');
@@ -188,6 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-    console.log("Script v18 inicializado completamente.");
+    console.log("Script v19 inicializado completamente.");
 
 }); // Fin del addEventListener('DOMContentLoaded')
