@@ -1,419 +1,713 @@
-/*
-Archivo: styles.css
-Descripción: Estilos generales para el sitio web.
-*/
-
-/* --- Ajustes Generales y Tipográficos --- */
-body {
-    font-family: Arial, sans-serif;
+/* Estilos Globales y Resets Básicos */
+* {
     margin: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    font-size: 16px;
-  }
-  
-  /* --- Estilos para el Header (Encabezado) --- */
-  header {
-    background-color: #3b3028; /* Marrón Oscuro */
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
-  }
-  
-  header h1 {
-    margin: 0;
-    padding: 0 1rem; /* Añadir padding para separar del borde */
-    text-transform: uppercase;
-    font-size: 1.5rem; /* Tamaño de la fuente para el h1 */
-    letter-spacing: 2px; /* Espaciado entre letras */
-    color: #ffffff;
-  }
-  
-  header nav {
-    margin-top: 1rem; /* Espacio sobre el nav */
-  }
-  
-  header nav ul {
-    list-style: none;
     padding: 0;
-    margin: 0;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin: 0 1rem;
-  }
-  
-  header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  header nav ul li a:hover {
+    box-sizing: border-box; 
+}
+
+#inicio, 
+#nosotros, 
+#cocina, 
+#contacto {
+  scroll-margin-top: 140px; /* Ajusta este valor si es necesario (altura del header + margen) */
+}
+
+body {
+    background-color: #2a211b; 
+    color: #e0d6c1;
+    background-image: url('images/light-veneer.png');
+    background-blend-mode: multiply; 
+    background-repeat: repeat; 
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Añadimos padding-top a main para compensar el header fijo */
+main {
+    padding-top: 130px; /* Ajusta este valor según la altura real de tu header fijo */
+}
+
+.container {
+    max-width: 1100px; 
+    margin: 0 auto; 
+    overflow: hidden; 
+    padding: 0 20px; 
+}
+
+h1, h2, h3 {
+    font-family: "Merriweather", serif;
+    font-weight: 700; 
+    line-height: 1.3; 
+    margin-bottom: 1rem; 
+}
+
+p {
+    margin-bottom: 1rem; 
+}
+
+a {
+    color: #a04f33; 
+    text-decoration: none; 
+}
+
+a:hover {
+    color: #c86442; 
+}
+
+ul {
+    list-style: none; 
+}
+
+/* ================================= */
+/* Estilos del Encabezado (Header)   */
+/* ================================= */
+header {
+    background-color: #f8f8f8; /* Blanco Roto */
+    padding: 1rem 0; 
+    border-bottom: 3px solid #a04f33; /* Terracota */
+    
+    /* --- Cambios para Header Fijo --- */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ajustada por usuario */
+    /* --- Fin Cambios --- */
+}
+
+header .container {
+    /* Estilos base para escritorio */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* Estilos para el enlace del logo */
+.header-logo-link {
+  display: inline-block; 
+  line-height: 0; 
+}
+
+/* Estilos BASE para el logo (Escritorio y por defecto) */
+.header-logo {
+  display: block; 
+  max-height: 90px; /* Ajustado por usuario */
+  width: auto; 
+}
+
+/* Estilos base para Nav en escritorio */
+header nav ul {
+    display: flex; 
+}
+
+header nav ul li {
+    margin-left: 25px; 
+}
+
+header nav ul li a {
+    color: #1a110a; /* Negro/Marrón muy oscuro */
+    padding-bottom: 5px; 
+}
+
+header nav ul li a:hover {
     color: #a04f33; /* Terracota */
+}
+
+header nav ul li a.active-link {
+    color: #a04f33; /* Color Terracota (mismo que hover) */
+    /* Opcional: podrías añadir otras diferencias, como font-weight, pero solo el color es lo común */
+    /* border-bottom-color: #a04f33; */ /* Podrías mantener el borde si quisieras */
   }
-  
-  /* Estilo para el enlace activo */
-  header nav ul li a.active-link {
-    color: #a04f33; /* Terracota */
-    font-weight: bold;
-    font-size: 1.1rem; /* Tamaño ligeramente más grande */
-  }
-  
-  /* Estilos para el botón del menú móvil */
-  #mobile-menu-button {
-    display: none; /* Oculto por defecto */
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem; /* Ajuste de tamaño del icono */
-    padding: 0.5rem;
+
+/* Estilos para el Menú Móvil (Botón) */
+.mobile-menu-button {
+    display: none; 
+    background: none; 
+    border: none; 
+    color: #3b3028; /* Marrón Oscuro */
     cursor: pointer;
+    padding: 5px; 
+}
+.mobile-menu-button svg {
+    display: block; 
+}
+
+
+/* ================================= */
+/* Clases Utilitarias y Contenido    */
+/* ================================= */
+.content-section {
+    padding: 3rem 0; 
+}
+
+.bg-dark {
+    background-color: #3b3028; 
+    color: #e0d6c1; 
+}
+
+.btn { 
+    font-family: inherit;
+    display: inline-block;
+    background-color: #a04f33; 
+    color: #e0d6c1; 
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #c86442; 
+    color: #e0d6c1; 
+}
+
+/* Estilos básicos Formulario (generales) */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Label general (fuera de #contacto) */
+.form-group label {
+    font-family: inherit; 
+    display: block;
+    font-weight: bold; 
+    color: #ddd; 
+    margin-bottom: 8px; 
+}
+
+/* Input/Textarea general (fuera de #contacto) */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    font-family: inherit; 
+    width: 100%; 
+    padding: 12px; 
+    border: 2px solid #555; 
+    background-color: #2e2e2e; 
+    color: #f4f4f4; 
+    border-radius: 5px;
+    /* transition: border-color 0.3s ease; */ 
+}
+
+/* Focus general (fuera de #contacto) */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #e87a00; 
+    outline: none; 
+}
+
+/* Estilos para Mensajes de Error del Formulario */
+.error-message {
+    color: #e53e3e; 
+    font-size: 0.875rem; 
+    display: block; 
+    margin-top: 5px; 
+    min-height: 1.2em; 
+}
+  
+/* Borde de error específico para #contacto */
+#contacto .form-group input[type="text"].error,
+#contacto .form-group input[type="email"].error,
+#contacto .form-group textarea.error {
+  border: 1px solid #e53e3e !important; 
+}
+
+/* Borde de error en focus específico para #contacto */
+#contacto .form-group input[type="text"].error:focus,
+#contacto .form-group input[type="email"].error:focus,
+#contacto .form-group textarea.error:focus {
+  border: 1px solid #e53e3e !important; 
+  outline: none; 
+}
+
+
+/* ============================ */
+/* Estilos Sección Hero (#inicio) */
+/* ============================ */
+
+.hero {
+    min-height: 60vh; 
+    color: #fff;              
+    padding: 3rem 20px; /* Padding base (vertical y horizontal mínimo) */
+    display: flex;          
+    justify-content: center; 
+    align-items: center;     
+    position: relative; 
+    overflow: hidden;   
+    box-sizing: border-box; 
+  }
+
+.hero .hero-content { 
+  position: relative; 
+  z-index: 1;         
+  color: #fff;        
+  text-align: center; 
+  width: 100%; 
+  max-width: 1100px; 
+}
+
+.hero-video {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    /* Técnica para cubrir manteniendo aspecto */
+    min-width: 100%;  /* Revertido a 100% */
+    min-height: 100%; 
+    width: auto;      
+    height: auto;     
+    /* --- Fin Técnica Cover --- */
+    z-index: -1;   
+    /* object-fit: cover; */ 
+    /* object-position: center center; */ 
   }
   
-  /* Estilos para la navegación móvil */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 0; 
+} 
+
+.hero h2 {
+    font-size: 3rem; 
+    margin-bottom: 1rem;
+    font-weight: bold; 
+}
+
+.hero p {
+    font-size: 1.4rem; 
+    margin-bottom: 0; 
+    font-weight: 300; 
+}
+
+/* ================================= */
+/* Estilos Contenido General & Nosotros */
+/* ================================= */
+.content-section {
+    padding: 3rem 0; 
+}
+
+.content-section h3 {
+    font-size: 2rem; 
+    text-align: center; 
+    margin-bottom: 2.5rem; 
+    border-bottom: 3px solid #e87a00; 
+    padding-bottom: 0.5rem; 
+    display: inline-block; 
+}
+
+.content-section .container > h3 {
+    display: block; 
+    width: fit-content; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 2.5rem; 
+}
+
+#nosotros {
+  background-color: #f8f8f8; 
+}
+
+#nosotros h3 { 
+    color: #1a110a; 
+}
+
+#nosotros p {
+    text-align: justify; 
+    hyphens: auto; 
+    max-width: 800px; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 1rem; 
+    color: #1a110a; 
+}
+
+/* ================================= */
+/* Estilos Sección Nuestra Cocina (#cocina) */
+/* ================================= */
+#cocina {
+    background-color: #3b3028; 
+    color: #e0d6c1; 
+}
+
+#cocina h3 { 
+    color: #e0d6c1;
+    border-bottom-color: #e87a00; 
+}
+
+#cocina > .container > p { 
+    text-align: center; 
+    max-width: 750px;  
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 3rem; 
+    color: #e0d6c1; 
+    line-height: 1.7; 
+}
+
+/* --- Estilos para Swiper Carousel --- */
+.gallery.swiper-container {
+  width: 100%;
+  margin-top: 3rem; 
+  overflow: hidden; 
+  position: relative; 
+}
+
+.gallery .swiper-slide img {
+  display: block; 
+  width: 100%; 
+  height: 400px; /* Altura fija para el slider */
+  object-fit: cover; /* Cubre el área recortando */
+  border-radius: 5px; 
+}
+
+.gallery .swiper-button-prev,
+.gallery .swiper-button-next {
+  --swiper-navigation-color: #a04f33; 
+}
+.gallery .swiper-button-prev:hover,
+.gallery .swiper-button-next:hover {
+   --swiper-navigation-color: #c86442; 
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: #e0d6c1; 
+  opacity: 0.6; 
+  background: var(--swiper-pagination-bullet-inactive-color); 
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet-active {
+  --swiper-pagination-color: #a04f33; 
+  background: var(--swiper-pagination-color); 
+  opacity: 1; 
+}
+/* --- Fin Estilos Swiper Carousel --- */
+
+
+/* ================================= */
+/* Estilos Sección Contacto (#contacto) */
+/* ================================= */
+#contacto {
+    background-color: #f8f8f8; 
+    padding: 3rem 0; 
+}
+
+#contacto > .container > p { 
+    text-align: center;
+    max-width: 700px; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 3rem; 
+    color: #1a110a; 
+}
+
+#contacto h3 {
+    color: #1a110a; 
+    border-bottom-color: #a04f33; 
+}
+
+#contacto form {
+    max-width: 700px; 
+    margin: 0 auto 3rem auto; 
+}
+
+#contacto .form-group label {
+    color: #1a110a; 
+    font-weight: 700; 
+    font-family: inherit; 
+    display: block;
+    margin-bottom: 5px; 
+}
+
+#contacto .form-group input[type="text"],
+#contacto .form-group input[type="email"],
+#contacto .form-group textarea {
+    border: 1px solid #ccc; 
+    background-color: #ffffff; 
+    color: #1a110a; 
+    font-family: inherit; 
+    width: 100%;
+    padding: 10px; 
+    border-radius: 5px;
+    /* transition: border-color 0.3s ease; */ 
+}
+
+#contacto .form-group input[type="text"]:focus,
+#contacto .form-group input[type="email"]:focus,
+#contacto .form-group textarea:focus {
+    border-color: #a04f33; 
+    outline: none;
+}
+
+#contacto .contact-info {
+    margin-top: 2rem; 
+    border-top: 2px solid #ddd; 
+    padding-top: 2rem; 
+    text-align: center;
+}
+
+#contacto .contact-info p {
+    color: #1a110a; 
+    margin-bottom: 1.2rem; 
+    font-size: 1.1rem;   
+    line-height: 1.8;   
+}
+
+#contacto .contact-info p strong {
+    color: #a04f33; 
+    margin-right: 10px; 
+    display: inline-block; 
+}
+
+#contacto .btn {
+    display: block; 
+    width: 100%;    
+    padding: 12px;  
+    font-size: 1.1rem; 
+    margin-top: 1.5rem; 
+    background-color: #a04f33;
+    color: #e0d6c1;
+}
+#contacto .btn:hover {
+    background-color: #c86442;
+    color: #e0d6c1;
+}
+
+/* Footer Básico */
+footer {
+    text-align: center;
+    padding: 1.5rem 0; 
+    margin-top: 1.5rem; 
+    border-top: 1px solid #444; 
+    background-color: #3b3028; 
+}
+footer p {
+    font-size: 0.85rem;
+}
+
+
+/* ================================= */
+/* Estilos Responsivos (Media Queries) */
+/* ================================= */
+
+@media (min-width: 1101px) { /* Usamos 1101px para asegurar que sea mayor a 1100px */
+    .hero-video {
+        /* Posicionamiento y centrado */
+        position: absolute; 
+        left: 50%;
+        top: 50%;
+        /* Combinamos translate y el nuevo scale */
+        transform: translate(-50%, -50%) scale(1.08); /* AÑADIDO scale(1.05) */
+        
+        /* Dimensiones y ajuste */
+        width: 1100px;      
+        max-width: 100%;    
+        height: 100%;     
+        object-fit: cover;  
+        
+        /* Mantenemos z-index */
+        z-index: -1;   
+        
+        /* Anulamos min-width/min-height */
+        min-width: auto; 
+        min-height: auto; 
+      }
+  }
+
+/* --- Para Tablets y Pantallas Medianas --- */
+@media (max-width: 768px) {
+  
+  /* Logo Responsivo */
+  .header-logo {
+    max-height: 80px; /* Ajustado por usuario */
+  }
+
+  header nav.mobile-nav-active ul li a.active-link {
+    color: #a04f33; /* Terracota */
+ }
+
+  /* Layout Header con Grid */
+  header .container {
+    display: grid; 
+    grid-template-columns: auto 1fr auto; 
+    align-items: center; 
+  }
+  .header-logo-link {
+     grid-column: 2 / 3; 
+     justify-self: center; 
+  }
+  /* Mostrar botón hamburguesa y posicionarlo */
+  .mobile-menu-button {
+    grid-column: 3 / 4; 
+    justify-self: end; 
+    display: block; 
+  }
+
   /* Ocultar Nav base */
   header nav ul {
-    display: none;
-    transition: height 0.3s ease-in-out;
+    display: none; 
   }
   
   /* Estilos para la navegación activa (menú desplegable) */
   /* Revertido a fondo oscuro y texto claro */
   header nav.mobile-nav-active ul {
-    display: block;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease-in-out;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    position: absolute;
-    top: 100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;   
+    gap: 1rem;             
+    position: absolute; 
+    top: 100%; 
     left: 0;
     width: 100%;
     background-color: #3b3028; /* Revertido a Marrón Oscuro */
-    padding: 1rem 0;
+    padding: 1rem 0; 
     border-top: 1px solid #a04f33; /* Revertido a Terracota */
-    z-index: 1000;
+    z-index: 1000; 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra ajustada por usuario */
   }
-  header nav.mobile-nav-active ul.show {
-    height: 1000px; /* Altura máxima para asegurar que se despliegue todo */
+  /* Color claro para links en menú desplegable */
+  header nav.mobile-nav-active ul li a {
+    padding: 0.5rem 1rem;
+    border-bottom: none; 
+    color: #e0d6c1; /* Revertido a Beige claro */
   }
-  /* --- Estilos para el Contenido Principal (main) --- */
-  main {
-    padding: 2rem 1rem;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  /* Hover para links en menú desplegable (SIN fondo) */
+   header nav.mobile-nav-active ul li a:hover {
+    color: #c86442; /* Terracota más claro */
+    /* background-color: rgba(0, 0, 0, 0.1); */ 
+    border-bottom: none;
   }
-  
-  /* Estilos para el Hero */
-  .hero {
-    text-align: center;
-    background-image: url('images/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 400px; /* Altura mínima */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-    padding: 2rem 15px; /* Espacio interno */
+  /* Quitamos margen izquierdo que aplicaba en escritorio */
+   header nav.mobile-nav-active ul li {
+    margin-left: 0; 
   }
-  
+
+
+  /* Ajustes generales para tablet */
   .hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .hero p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  .hero .button-link {
-    display: inline-block;
-    background-color: #a04f33; /* Terracota */
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .hero .button-link:hover {
-    background-color: #3b3028; /* Marrón Oscuro */
-  }
-  
-  /* Estilos para las Secciones */
-  section {
-    padding: 2rem 1rem;
-  }
-  
-  section h3 {
-    color: #a04f33; /* Terracota */
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  
-  section p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  /* Estilos para la Sección "Nosotros" */
-  .about-us {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .about-us .image-container {
-    flex: 1 1 300px;
-    min-width: 300px;
-    max-width: 400px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .about-us .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .about-us .text-content {
-    flex: 2 1 300px;
-  }
-  
-  /* Estilos para la Sección "Galería" */
-  .gallery {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .gallery.swiper-container {
-    width: 100%;
-    height: auto;
-  }
-  
-  .gallery .swiper-wrapper {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .gallery .swiper-slide {
-    text-align: center;
-  }
-  
-  .gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .gallery .swiper-button-prev,
-  .gallery .swiper-button-next {
-    color: #3b3028; /* Marrón Oscuro */
-  }
-  
-  .gallery .swiper-pagination-bullet-active {
-    background-color: #3b3028; /* Marrón Oscuro */
-  }
-  
-  /* Estilos para el Formulario de Contacto */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  form label {
-    font-weight: bold;
-  }
-  
-  form input[type="text"],
-  form input[type="email"],
-  form textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  form textarea {
-    height: 100px;
-    resize: vertical;
-  }
-  
-  form button[type="submit"] {
-    background-color: #a04f33; /* Terracota */
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  form button[type="submit"]:hover {
-    background-color: #3b3028; /* Marrón Oscuro */
-  }
-  
-  /* Estilos para mensajes de error */
-  .error {
-    border: 1px solid red !important;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 0.9rem;
-  }
-  
-  /* Estilos para el Footer */
-  footer {
-    background-color: #3b3028; /* Marrón Oscuro */
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-  }
-  
-  footer p {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-  
-  /* --- Media Queries --- */
-  /* Ajustes para Tablet (768px) */
-  @media (min-width: 768px) {
-    /* Cambios en el Header para tablet */
-    header h1 {
-      font-size: 2rem; /* Tamaño más grande para h1 */
-    }
-  
-    header nav ul li {
-      margin: 0 1.5rem; /* Mayor separación entre items */
-    }
-  
-    header nav ul li a {
-      font-size: 1.1rem; /* Texto de menú más grande */
-    }
-    /* Ajustes para el Hero */
-    .hero {
-      min-height: 450px; /* Aumentar altura */
-    }
-  
-    .hero h2 {
-      font-size: 3rem; /* Más grande */
-    }
-    /* Ajustes para el About Us */
-    .about-us {
-      gap: 2rem; /* Mayor espacio */
-    }
-  
-    .about-us .text-content {
-      flex: 1.5; /* Priorizar texto */
-    }
-    /* Ajustes para la Galería */
-    .gallery {
-      margin-top: 2rem; /* Mayor espacio arriba */
-    }
-    /* Ajustes para el Formulario de Contacto */
-    form {
-      gap: 1.5rem; /* Mayor espacio */
-    }
-  
-    form button[type="submit"] {
-      padding: 1rem 2rem; /* Botón más grande */
-    }
-  
-    /* Ajustes para el Footer */
-    footer p {
-      font-size: 1rem; /* Tamaño de fuente más grande */
-    }
-  }
-  
-  /* Ajustes para Desktop (1024px) */
-  @media (min-width: 1024px) {
-    /* Cambios en el Header para desktop */
-    header h1 {
       font-size: 2.5rem;
-    }
-  
-    header nav ul li {
-      margin: 0 2rem;
-    }
-  
-    header nav ul li a {
-      font-size: 1.2rem;
-    }
-    /* Ajustes para el Hero */
-    .hero {
-      min-height: 500px; /* Más grande en desktop */
-    }
-  
-    .hero h2 {
-      font-size: 3.5rem;
-    }
-    /* Ajustes para el About Us */
-    .about-us {
-      gap: 3rem; /* Mayor espacio */
-    }
-    /* Ajustes para la Galería */
-    .gallery {
-      margin-top: 3rem; /* Aún mayor espacio */
-    }
   }
-  
+  .hero p {
+      font-size: 1.2rem;
+  }
+  .content-section h3 {
+      font-size: 1.8rem;
+  }
+  #nosotros p,
+  #cocina > .container > p, 
+  #contacto > .container > p {
+      max-width: 90%; 
+  }
+  #contacto form {
+      max-width: 90%;
+  }
+
+} /* Fin de @media (max-width: 768px) */
+
+
+/* --- Para Teléfonos Móviles --- */
+@media (max-width: 480px) {
+
+  /* Logo Responsivo */
+  .header-logo {
+    max-height: 80px; /* Ajustado por usuario */
+  }
+
+  /* Ajuste Video Hero Móvil (Contain) */
+  .hero-video {
+    /* Sobreescribimos para mostrar video completo */
+    width: 100%;     
+    height: 100%;    
+    object-fit: contain; /* Muestra video completo, puede dejar barras */
+    /* Anulamos min-width/min-height de la regla base si interfieren */
+    min-width: auto; 
+    min-height: auto;
+  }
+
+
   /* Ajustes generales para móvil */
-  @media (max-width: 767px) {
-    /* Ajustes del header */
-    header h1 {
-      font-size: 1.2rem;
-    }
-  
-    /* Ocultar nav en desktop */
-    header nav ul {
-      display: none; /* Ocultar el menú en desktop */
-    }
-  
-    /* Mostrar el botón del menú móvil */
-    #mobile-menu-button {
-      display: block;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1001; /* Asegura que esté por encima del menú */
-      font-size: 2rem;
-    }
-  
-    body {
+  body {
       font-size: 15px;
-      line-height: 1.6;
-    }
-    /* El color/tamaño del link en el menú activo se hereda de 768px */
-    header nav.mobile-nav-active ul li a {
-      font-size: 1rem;
-    }
-  
-    .hero {
-      /* Cambiamos min-height para aproximar proporción 4:3 */
-      min-height: 75vw; /* Alto = 75% del ancho de la ventana */
-      padding: 2rem 15px; /* Mantenemos padding */
-      /* El resto de estilos de .hero (display: flex, etc.) se heredan o no aplican aquí */
-    }
+      line-height: 1.6; 
   }
-  
+  /* El color/tamaño del link en el menú activo se hereda de 768px */
+  header nav.mobile-nav-active ul li a { 
+      font-size: 1rem; 
+  }
+
+  .hero {
+    /* Cambiamos min-height para aproximar proporción 4:3 */
+    min-height: 75vw; /* Alto = 75% del ancho de la ventana */ 
+    padding: 2rem 15px; /* Mantenemos padding */
+    /* El resto de estilos de .hero (display: flex, etc.) se heredan o no aplican aquí */
+}
+
+/* Asegúrate de que la regla para .hero-video DENTRO de esta misma 
+   media query todavía usa object-fit: contain */
+.hero-video {
+  position: absolute; /* Añadido para asegurar posicionamiento */
+  top: 50%;
+  left: 50%;
+  /* Combinamos translate para centrar y scale para zoom */
+  transform: translate(-50%, -50%) scale(1.4); /* AÑADIDO scale(1.1) */
+  width: 100%;     
+  height: 100%;    
+  object-fit: contain; /* Mantenemos contain */
+  min-width: auto; 
+  min-height: auto;
+  z-index: -1; /* Aseguramos z-index */
+}
+
+  .hero {
+      min-height: 30vh; /* Ajustado por usuario */
+      padding: 2rem 15px; /* Padding base móvil */
+  }
+  .hero h2 {
+      font-size: 2rem; 
+      line-height: 1.3; 
+  }
+  .hero p {
+      font-size: 1.1rem; 
+  }
+  .content-section {
+      padding: 2.5rem 0; 
+  }
+   .content-section h3 {
+      font-size: 1.6rem; 
+       margin-bottom: 2rem; 
+  }
+   .contact-info {
+       margin-top: 2.5rem;
+       padding-top: 1.5rem;
+   }
+  .contact-info p {
+       font-size: 1rem;
+       line-height: 1.7;
+   }
+   /* Footer styles already present outside media query */
+   /* footer { ... } */
+   /* footer p { ... } */
+
+   #contacto .form-group input[type="text"],
+   #contacto .form-group input[type="email"],
+   #contacto .form-group textarea {
+        padding: 10px; 
+   }
+    #contacto .btn {
+        padding: 10px;
+        font-size: 1rem;
+   }
+
+} /* Fin de @media (max-width: 480px) */
+
