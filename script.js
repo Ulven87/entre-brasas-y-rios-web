@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v21 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v22 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
@@ -42,7 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
           isLinkClicked = false;
         }, 1000);
         if (href === '#inicio') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          const headerHeight = document.querySelector('header').offsetHeight;
+          window.scrollTo({
+            top: 0 - headerHeight,
+            behavior: 'smooth',
+          });
         } else {
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
@@ -213,5 +217,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v21 inicializado completamente.');
+  console.log('Script v22 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
