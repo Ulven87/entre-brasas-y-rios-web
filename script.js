@@ -1,4 +1,4 @@
-// Espera a que todo el contenido HTML esté cargado
+5// Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM Cargado. Iniciando script v2 (ScrollMagic).');
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuButton.addEventListener('click', function () {
       // Add the mobile-nav-animation class
       navElement.classList.add('mobile-nav-animation');
-      
+
       navElement.classList.toggle('mobile-nav-active');
 
       //if is not mobile-nav-active, then remove mobile-nav-animation
