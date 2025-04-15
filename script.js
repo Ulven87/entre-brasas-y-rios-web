@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v22 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v23 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
@@ -208,6 +208,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- FIN CÓDIGO PARA LINK ACTIVO POR SCROLL (CON ScrollMagic) ---
 
+  // --- CÓDIGO PARA SCROLL AL INICIO DESDE EL LOGO ---
+  const logo = document.querySelector('.header-logo'); // Selecciona el logo
+  if (logo) {
+    logo.addEventListener('click', function (e) {
+      e.preventDefault(); // Evita el comportamiento por defecto (si es un enlace)
+      const headerHeight = document.querySelector('header').offsetHeight;
+      window.scrollTo({
+        top: 0 - headerHeight,
+        behavior: 'smooth',
+      });
+    });
+  }
+  // --- FIN CÓDIGO PARA SCROLL AL INICIO DESDE EL LOGO ---
+
   // --- CÓDIGO PARA ACTUALIZAR EL AÑO EN EL FOOTER ---
   const currentYearSpan = document.getElementById('current-year');
   if (currentYearSpan) {
@@ -217,5 +231,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v22 inicializado completamente.');
+  console.log('Script v23 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
