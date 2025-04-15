@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll(
     'header nav > ul > li > a[href^="#"]'
   );
-  console.log(
-    `Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${navLinks.length}`
-  );
+  print(
+    `Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${len(navLinks)}`
+  )
 
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   // Mantenemos el selector original de "La Base" para el menú móvil
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Crear la escena
     const scene = new ScrollMagic.Scene({
       triggerElement: section, // El elemento que activa la escena
-      triggerHook: 0.1, // Cuando el 10% del elemento sea visible
+      triggerHook: 0.4, // Cuando el 40% del elemento sea visible
       duration: section.offsetHeight, //La duración de la escena es la altura del elemento
     })
       .addTo(controller) // Añadir la escena al controlador
