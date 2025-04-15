@@ -77,6 +77,9 @@ header {
     /* --- Fin Cambios --- */
 }
 
+header nav{
+    transition: max-height 0.3s ease-in-out, overflow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Agregado por usuario */
+}
 header .container {
     /* Estilos base para escritorio */
     display: flex; 
@@ -277,7 +280,7 @@ header nav ul li a.active-link {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 0; 
-} 
+}
 
 .hero h2 {
     font-size: 3rem; 
@@ -496,6 +499,19 @@ footer p {
     font-size: 0.85rem;
 }
 
+/* Estilos para el menú de navegación en móvil */
+.mobile-nav-animation ul{
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.mobile-nav-animation.mobile-nav-active ul{
+    transform: translate(0, 100%);
+    top: 100%;
+}
 
 /* ================================= */
 /* Estilos Responsivos (Media Queries) */
@@ -710,4 +726,3 @@ footer p {
    }
 
 } /* Fin de @media (max-width: 480px) */
-

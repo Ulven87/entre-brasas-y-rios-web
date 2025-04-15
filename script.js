@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v26 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v2 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
@@ -79,7 +79,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- CÓDIGO PARA MENÚ MÓVIL ---
   if (mobileMenuButton && navElement) {
     mobileMenuButton.addEventListener('click', function () {
+      // Add the mobile-nav-animation class
+      navElement.classList.add('mobile-nav-animation');
+      
       navElement.classList.toggle('mobile-nav-active');
+
+      //if is not mobile-nav-active, then remove mobile-nav-animation
+      if (!navElement.classList.contains('mobile-nav-active')){
+        navElement.classList.remove('mobile-nav-animation');
+      }
+
       const isExpanded = navElement.classList.contains('mobile-nav-active');
       this.setAttribute('aria-expanded', isExpanded);
       this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
@@ -235,5 +244,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v26 inicializado completamente.');
+  console.log('Script v2 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
