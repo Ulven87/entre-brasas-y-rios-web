@@ -508,9 +508,9 @@ footer p {
     overflow: hidden;
 }
 
-.mobile-nav-animation.mobile-nav-active ul{
-    top: 0;    transform: translateY(100%);
-    background: #3b3028;
+.mobile-nav-animation.mobile-nav-active ul {
+    transform: translateY(100%);
+    background: #3b3028;    
 }
 
 /* ================================= */
@@ -583,7 +583,7 @@ footer p {
     align-items: center;   
     gap: 1rem;             
     position: absolute; 
-    top: 100%; 
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: #3b3028; /* Revertido a Marrón Oscuro */
