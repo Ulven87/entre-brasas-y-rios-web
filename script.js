@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v21 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v25 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
@@ -42,7 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
           isLinkClicked = false;
         }, 1000);
         if (href === '#inicio') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          const headerHeight = document.querySelector('header').offsetHeight;
+          window.scrollTo({
+            top: 0 - headerHeight,
+            behavior: 'smooth',
+          });
         } else {
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
@@ -204,6 +208,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- FIN CÓDIGO PARA LINK ACTIVO POR SCROLL (CON ScrollMagic) ---
 
+  // --- CÓDIGO PARA SCROLL AL INICIO DESDE EL LOGO ---
+  const logo = document.querySelector('.header-logo'); // Selecciona el logo
+  if (logo) {
+    logo.addEventListener('click', function (e) {
+      e.preventDefault(); // Evita el comportamiento por defecto
+      const headerHeight = document.querySelector('header').offsetHeight;
+      // Cambiar la URL a la raíz
+      window.history.pushState(null, '', window.location.pathname.split('/')[1]? '/' : '/');
+      // Hacer scroll al tope superior con la corrección del header
+      window.scrollTo({
+        top: 0 - headerHeight,
+        behavior: 'smooth',
+      });
+    });
+  }
+  // --- FIN CÓDIGO PARA SCROLL AL INICIO DESDE EL LOGO ---
+
   // --- CÓDIGO PARA ACTUALIZAR EL AÑO EN EL FOOTER ---
   const currentYearSpan = document.getElementById('current-year');
   if (currentYearSpan) {
@@ -213,5 +234,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v21 inicializado completamente.');
+  console.log('Script v25 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
