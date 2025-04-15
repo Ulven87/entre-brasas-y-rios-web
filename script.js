@@ -1,15 +1,15 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v19 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v20 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
   const navLinks = document.querySelectorAll(
     'header nav > ul > li > a[href^="#"]'
   );
-  print(
-    `Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${len(navLinks)}`
-  )
+  console.log(
+    `Enlaces encontrados con 'header nav > ul > li > a[href^="#"]': ${navLinks.length}`
+  );
 
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   // Mantenemos el selector original de "La Base" para el menú móvil
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentlyActiveLink = null;
   let isScrollingAfterClick = false;
   let scrollTimeoutId = null;
-  let isLinkClicked = false;
 
   // --- Código Scroll Suave (CON resaltado inmediato y bandera - CORREGIDO) ---
   if (navLinks.length > 0) {
@@ -32,14 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
         clickedLink.classList.add('active-link');
         currentlyActiveLink = clickedLink;
         isScrollingAfterClick = true;
-        isLinkClicked = true;
         if (scrollTimeoutId) {
           clearTimeout(scrollTimeoutId);
         }
         scrollTimeoutId = setTimeout(() => {
           isScrollingAfterClick = false;
           scrollTimeoutId = null;
-          isLinkClicked = false;
         }, 1000);
         if (href === '#inicio') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,10 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuButton.addEventListener('click', function () {
       navElement.classList.toggle('mobile-nav-active');
       const isExpanded = navElement.classList.contains('mobile-nav-active');
-      const navUl = navElement.querySelector('ul'); // Selecciona la ul del menu
-      if (navUl) {
-        navUl.classList.toggle('show', isExpanded);
-      }
       this.setAttribute('aria-expanded', isExpanded);
       this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
     });
@@ -170,15 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Crear la escena
     const scene = new ScrollMagic.Scene({
       triggerElement: section, // El elemento que activa la escena
-      triggerHook: 0.4, // Cuando el 40% del elemento sea visible
+      triggerHook: 0.1, // Cuando el 10% del elemento sea visible
       duration: section.offsetHeight, //La duración de la escena es la altura del elemento
     })
       .addTo(controller) // Añadir la escena al controlador
       //.addIndicators() // Descomenta esta línea para ver las líneas de referencia
       .on('enter', () => {
-        if (isLinkClicked) {
-          return;
-        }
         const id = section.getAttribute('id');
         const correspondingLink = document.querySelector(
           `header nav > ul > li > a[href="#${id}"]`
@@ -217,5 +207,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v19 inicializado completamente.');
+  console.log('Script v20 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
