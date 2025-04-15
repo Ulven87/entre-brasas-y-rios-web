@@ -509,7 +509,7 @@ footer p {
 }
 
 .mobile-nav-animation.mobile-nav-active ul{
-    top: 0;
+    top: 0;    transform: translateY(100%);
     background: #3b3028;
 }
 
