@@ -504,13 +504,13 @@ footer p {
     position: fixed;
     top: -100%;
     width: 100%;
-    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
     overflow: hidden;
 }
 
 .mobile-nav-animation.mobile-nav-active ul{
-    transform: translate(0, 100%);
-    top: 100%;
+    top: 0;
+    background: #3b3028;
 }
 
 /* ================================= */
