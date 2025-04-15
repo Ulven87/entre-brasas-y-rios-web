@@ -501,20 +501,17 @@ footer p {
 
 /* Estilos para el menú de navegación en móvil */
 .mobile-nav-animation ul{
-  position: fixed;
-  width: 100%;
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  overflow: hidden;
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
 }
-.mobile-nav-animation.mobile-nav-active ul {
+.mobile-nav-animation.mobile-nav-active ul{
     transform: translateY(100%);
-    background: #3b3028;    
+    background: #3b3028;
 }
 
-/* ================================= */
-/* Estilos Responsivos (Media Queries) */
-/* ================================= */
 
 @media (min-width: 1101px) { /* Usamos 1101px para asegurar que sea mayor a 1100px */
     .hero-video {
@@ -580,7 +577,6 @@ footer p {
     display: flex; 
     flex-direction: column; 
     align-items: center;   
-    top: 100%;
     left: 0;
     width: 100%;
     background-color: #3b3028; /* Revertido a Marrón Oscuro */
