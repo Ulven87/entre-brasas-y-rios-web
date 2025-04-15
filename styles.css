@@ -1,713 +1,392 @@
-/* Estilos Globales y Resets Básicos */
-* {
+/*
+  Aquí van los estilos para la web Entre Brasas y Ríos
+  Estilos base para:
+  - Tipografía
+  - Colores y tema general
+  - Estilos de botones
+  - Estilos de enlaces
+  - Estilos de formularios
+
+*/
+
+/* ============ ESTILOS BASE (ROOT) ============= */
+:root {
+    /* Tipografía */
+    --font-principal: 'Roboto', sans-serif;
+    --font-alt: 'Raleway', sans-serif;
+  
+    /* Colores */
+    --color-main-bg: #e0d6c1; /* Beige Claro */
+    --color-main-text: #3b3028; /* Marrón Oscuro */
+    --color-accent-1: #c86442; /* Terracota Claro */
+    --color-accent-2: #a04f33; /* Terracota */
+  
+    /* Tamaños de tipografía */
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 2rem;
+    --font-size-h4: 1.5rem;
+    --font-size-p: 1rem;
+  
+    /* Espaciados */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+  }
+  
+  /* ============ RESET BÁSICO ============= */
+  * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
-}
-
-#inicio, 
-#nosotros, 
-#cocina, 
-#contacto {
-  scroll-margin-top: 140px; /* Ajusta este valor si es necesario (altura del header + margen) */
-}
-
-body {
-    background-color: #2a211b; 
-    color: #e0d6c1;
-    background-image: url('images/light-veneer.png');
-    background-blend-mode: multiply; 
-    background-repeat: repeat; 
-    font-family: "Merriweather", serif;
-    font-weight: 400;
-    line-height: 1.7;
-}
-
-/* Añadimos padding-top a main para compensar el header fijo */
-main {
-    padding-top: 130px; /* Ajusta este valor según la altura real de tu header fijo */
-}
-
-.container {
-    max-width: 1100px; 
-    margin: 0 auto; 
-    overflow: hidden; 
-    padding: 0 20px; 
-}
-
-h1, h2, h3 {
-    font-family: "Merriweather", serif;
-    font-weight: 700; 
-    line-height: 1.3; 
-    margin-bottom: 1rem; 
-}
-
-p {
-    margin-bottom: 1rem; 
-}
-
-a {
-    color: #a04f33; 
-    text-decoration: none; 
-}
-
-a:hover {
-    color: #c86442; 
-}
-
-ul {
-    list-style: none; 
-}
-
-/* ================================= */
-/* Estilos del Encabezado (Header)   */
-/* ================================= */
-header {
-    background-color: #f8f8f8; /* Blanco Roto */
-    padding: 1rem 0; 
-    border-bottom: 3px solid #a04f33; /* Terracota */
-    
-    /* --- Cambios para Header Fijo --- */
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1100; 
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ajustada por usuario */
-    /* --- Fin Cambios --- */
-}
-
-header .container {
-    /* Estilos base para escritorio */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-/* Estilos para el enlace del logo */
-.header-logo-link {
-  display: inline-block; 
-  line-height: 0; 
-}
-
-/* Estilos BASE para el logo (Escritorio y por defecto) */
-.header-logo {
-  display: block; 
-  max-height: 90px; /* Ajustado por usuario */
-  width: auto; 
-}
-
-/* Estilos base para Nav en escritorio */
-header nav ul {
-    display: flex; 
-}
-
-header nav ul li {
-    margin-left: 25px; 
-}
-
-header nav ul li a {
-    color: #1a110a; /* Negro/Marrón muy oscuro */
-    padding-bottom: 5px; 
-}
-
-header nav ul li a:hover {
-    color: #a04f33; /* Terracota */
-}
-
-header nav ul li a.active-link {
-    color: #a04f33; /* Color Terracota (mismo que hover) */
-    /* Opcional: podrías añadir otras diferencias, como font-weight, pero solo el color es lo común */
-    /* border-bottom-color: #a04f33; */ /* Podrías mantener el borde si quisieras */
-  }
-
-/* Estilos para el Menú Móvil (Botón) */
-.mobile-menu-button {
-    display: none; 
-    background: none; 
-    border: none; 
-    color: #3b3028; /* Marrón Oscuro */
-    cursor: pointer;
-    padding: 5px; 
-}
-.mobile-menu-button svg {
-    display: block; 
-}
-
-
-/* ================================= */
-/* Clases Utilitarias y Contenido    */
-/* ================================= */
-.content-section {
-    padding: 3rem 0; 
-}
-
-.bg-dark {
-    background-color: #3b3028; 
-    color: #e0d6c1; 
-}
-
-.btn { 
-    font-family: inherit;
-    display: inline-block;
-    background-color: #a04f33; 
-    color: #e0d6c1; 
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px; 
-    transition: background-color 0.3s ease; 
-}
-
-.btn:hover {
-    background-color: #c86442; 
-    color: #e0d6c1; 
-}
-
-/* Estilos básicos Formulario (generales) */
-.form-group {
-    margin-bottom: 1rem;
-}
-
-/* Label general (fuera de #contacto) */
-.form-group label {
-    font-family: inherit; 
-    display: block;
-    font-weight: bold; 
-    color: #ddd; 
-    margin-bottom: 8px; 
-}
-
-/* Input/Textarea general (fuera de #contacto) */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-    font-family: inherit; 
-    width: 100%; 
-    padding: 12px; 
-    border: 2px solid #555; 
-    background-color: #2e2e2e; 
-    color: #f4f4f4; 
-    border-radius: 5px;
-    /* transition: border-color 0.3s ease; */ 
-}
-
-/* Focus general (fuera de #contacto) */
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group textarea:focus {
-    border-color: #e87a00; 
-    outline: none; 
-}
-
-/* Estilos para Mensajes de Error del Formulario */
-.error-message {
-    color: #e53e3e; 
-    font-size: 0.875rem; 
-    display: block; 
-    margin-top: 5px; 
-    min-height: 1.2em; 
-}
-  
-/* Borde de error específico para #contacto */
-#contacto .form-group input[type="text"].error,
-#contacto .form-group input[type="email"].error,
-#contacto .form-group textarea.error {
-  border: 1px solid #e53e3e !important; 
-}
-
-/* Borde de error en focus específico para #contacto */
-#contacto .form-group input[type="text"].error:focus,
-#contacto .form-group input[type="email"].error:focus,
-#contacto .form-group textarea.error:focus {
-  border: 1px solid #e53e3e !important; 
-  outline: none; 
-}
-
-
-/* ============================ */
-/* Estilos Sección Hero (#inicio) */
-/* ============================ */
-
-.hero {
-    min-height: 60vh; 
-    color: #fff;              
-    padding: 3rem 20px; /* Padding base (vertical y horizontal mínimo) */
-    display: flex;          
-    justify-content: center; 
-    align-items: center;     
-    position: relative; 
-    overflow: hidden;   
-    box-sizing: border-box; 
-  }
-
-.hero .hero-content { 
-  position: relative; 
-  z-index: 1;         
-  color: #fff;        
-  text-align: center; 
-  width: 100%; 
-  max-width: 1100px; 
-}
-
-.hero-video {
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    /* Técnica para cubrir manteniendo aspecto */
-    min-width: 100%;  /* Revertido a 100% */
-    min-height: 100%; 
-    width: auto;      
-    height: auto;     
-    /* --- Fin Técnica Cover --- */
-    z-index: -1;   
-    /* object-fit: cover; */ 
-    /* object-position: center center; */ 
+    box-sizing: border-box;
   }
   
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 0; 
-} 
-
-.hero h2 {
-    font-size: 3rem; 
-    margin-bottom: 1rem;
-    font-weight: bold; 
-}
-
-.hero p {
-    font-size: 1.4rem; 
-    margin-bottom: 0; 
-    font-weight: 300; 
-}
-
-/* ================================= */
-/* Estilos Contenido General & Nosotros */
-/* ================================= */
-.content-section {
-    padding: 3rem 0; 
-}
-
-.content-section h3 {
-    font-size: 2rem; 
-    text-align: center; 
-    margin-bottom: 2.5rem; 
-    border-bottom: 3px solid #e87a00; 
-    padding-bottom: 0.5rem; 
-    display: inline-block; 
-}
-
-.content-section .container > h3 {
-    display: block; 
-    width: fit-content; 
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 2.5rem; 
-}
-
-#nosotros {
-  background-color: #f8f8f8; 
-}
-
-#nosotros h3 { 
-    color: #1a110a; 
-}
-
-#nosotros p {
-    text-align: justify; 
-    hyphens: auto; 
-    max-width: 800px; 
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 1rem; 
-    color: #1a110a; 
-}
-
-/* ================================= */
-/* Estilos Sección Nuestra Cocina (#cocina) */
-/* ================================= */
-#cocina {
-    background-color: #3b3028; 
-    color: #e0d6c1; 
-}
-
-#cocina h3 { 
-    color: #e0d6c1;
-    border-bottom-color: #e87a00; 
-}
-
-#cocina > .container > p { 
-    text-align: center; 
-    max-width: 750px;  
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 3rem; 
-    color: #e0d6c1; 
-    line-height: 1.7; 
-}
-
-/* --- Estilos para Swiper Carousel --- */
-.gallery.swiper-container {
-  width: 100%;
-  margin-top: 3rem; 
-  overflow: hidden; 
-  position: relative; 
-}
-
-.gallery .swiper-slide img {
-  display: block; 
-  width: 100%; 
-  height: 400px; /* Altura fija para el slider */
-  object-fit: cover; /* Cubre el área recortando */
-  border-radius: 5px; 
-}
-
-.gallery .swiper-button-prev,
-.gallery .swiper-button-next {
-  --swiper-navigation-color: #a04f33; 
-}
-.gallery .swiper-button-prev:hover,
-.gallery .swiper-button-next:hover {
-   --swiper-navigation-color: #c86442; 
-}
-
-.gallery .swiper-pagination .swiper-pagination-bullet {
-  --swiper-pagination-bullet-inactive-color: #e0d6c1; 
-  opacity: 0.6; 
-  background: var(--swiper-pagination-bullet-inactive-color); 
-}
-
-.gallery .swiper-pagination .swiper-pagination-bullet-active {
-  --swiper-pagination-color: #a04f33; 
-  background: var(--swiper-pagination-color); 
-  opacity: 1; 
-}
-/* --- Fin Estilos Swiper Carousel --- */
-
-
-/* ================================= */
-/* Estilos Sección Contacto (#contacto) */
-/* ================================= */
-#contacto {
-    background-color: #f8f8f8; 
-    padding: 3rem 0; 
-}
-
-#contacto > .container > p { 
-    text-align: center;
-    max-width: 700px; 
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 3rem; 
-    color: #1a110a; 
-}
-
-#contacto h3 {
-    color: #1a110a; 
-    border-bottom-color: #a04f33; 
-}
-
-#contacto form {
-    max-width: 700px; 
-    margin: 0 auto 3rem auto; 
-}
-
-#contacto .form-group label {
-    color: #1a110a; 
-    font-weight: 700; 
-    font-family: inherit; 
-    display: block;
-    margin-bottom: 5px; 
-}
-
-#contacto .form-group input[type="text"],
-#contacto .form-group input[type="email"],
-#contacto .form-group textarea {
-    border: 1px solid #ccc; 
-    background-color: #ffffff; 
-    color: #1a110a; 
-    font-family: inherit; 
-    width: 100%;
-    padding: 10px; 
-    border-radius: 5px;
-    /* transition: border-color 0.3s ease; */ 
-}
-
-#contacto .form-group input[type="text"]:focus,
-#contacto .form-group input[type="email"]:focus,
-#contacto .form-group textarea:focus {
-    border-color: #a04f33; 
-    outline: none;
-}
-
-#contacto .contact-info {
-    margin-top: 2rem; 
-    border-top: 2px solid #ddd; 
-    padding-top: 2rem; 
-    text-align: center;
-}
-
-#contacto .contact-info p {
-    color: #1a110a; 
-    margin-bottom: 1.2rem; 
-    font-size: 1.1rem;   
-    line-height: 1.8;   
-}
-
-#contacto .contact-info p strong {
-    color: #a04f33; 
-    margin-right: 10px; 
-    display: inline-block; 
-}
-
-#contacto .btn {
-    display: block; 
-    width: 100%;    
-    padding: 12px;  
-    font-size: 1.1rem; 
-    margin-top: 1.5rem; 
-    background-color: #a04f33;
-    color: #e0d6c1;
-}
-#contacto .btn:hover {
-    background-color: #c86442;
-    color: #e0d6c1;
-}
-
-/* Footer Básico */
-footer {
-    text-align: center;
-    padding: 1.5rem 0; 
-    margin-top: 1.5rem; 
-    border-top: 1px solid #444; 
-    background-color: #3b3028; 
-}
-footer p {
-    font-size: 0.85rem;
-}
-
-
-/* ================================= */
-/* Estilos Responsivos (Media Queries) */
-/* ================================= */
-
-@media (min-width: 1101px) { /* Usamos 1101px para asegurar que sea mayor a 1100px */
-    .hero-video {
-        /* Posicionamiento y centrado */
-        position: absolute; 
-        left: 50%;
-        top: 50%;
-        /* Combinamos translate y el nuevo scale */
-        transform: translate(-50%, -50%) scale(1.08); /* AÑADIDO scale(1.05) */
-        
-        /* Dimensiones y ajuste */
-        width: 1100px;      
-        max-width: 100%;    
-        height: 100%;     
-        object-fit: cover;  
-        
-        /* Mantenemos z-index */
-        z-index: -1;   
-        
-        /* Anulamos min-width/min-height */
-        min-width: auto; 
-        min-height: auto; 
-      }
-  }
-
-/* --- Para Tablets y Pantallas Medianas --- */
-@media (max-width: 768px) {
-  
-  /* Logo Responsivo */
-  .header-logo {
-    max-height: 80px; /* Ajustado por usuario */
-  }
-
-  header nav.mobile-nav-active ul li a.active-link {
-    color: #a04f33; /* Terracota */
- }
-
-  /* Layout Header con Grid */
-  header .container {
-    display: grid; 
-    grid-template-columns: auto 1fr auto; 
-    align-items: center; 
-  }
-  .header-logo-link {
-     grid-column: 2 / 3; 
-     justify-self: center; 
-  }
-  /* Mostrar botón hamburguesa y posicionarlo */
-  .mobile-menu-button {
-    grid-column: 3 / 4; 
-    justify-self: end; 
-    display: block; 
-  }
-
-  /* Ocultar Nav base */
-  header nav ul {
-    display: none; 
-  }
-  
-  /* Estilos para la navegación activa (menú desplegable) */
-  /* Revertido a fondo oscuro y texto claro */
-  header nav.mobile-nav-active ul {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;   
-    gap: 1rem;             
-    position: absolute; 
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    background-color: #3b3028; /* Revertido a Marrón Oscuro */
-    padding: 1rem 0; 
-    border-top: 1px solid #a04f33; /* Revertido a Terracota */
-    z-index: 1000; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra ajustada por usuario */
-  }
-  /* Color claro para links en menú desplegable */
-  header nav.mobile-nav-active ul li a {
-    padding: 0.5rem 1rem;
-    border-bottom: none; 
-    color: #e0d6c1; /* Revertido a Beige claro */
-  }
-  /* Hover para links en menú desplegable (SIN fondo) */
-   header nav.mobile-nav-active ul li a:hover {
-    color: #c86442; /* Terracota más claro */
-    /* background-color: rgba(0, 0, 0, 0.1); */ 
-    border-bottom: none;
-  }
-  /* Quitamos margen izquierdo que aplicaba en escritorio */
-   header nav.mobile-nav-active ul li {
-    margin-left: 0; 
-  }
-
-
-  /* Ajustes generales para tablet */
-  .hero h2 {
-      font-size: 2.5rem;
-  }
-  .hero p {
-      font-size: 1.2rem;
-  }
-  .content-section h3 {
-      font-size: 1.8rem;
-  }
-  #nosotros p,
-  #cocina > .container > p, 
-  #contacto > .container > p {
-      max-width: 90%; 
-  }
-  #contacto form {
-      max-width: 90%;
-  }
-
-} /* Fin de @media (max-width: 768px) */
-
-
-/* --- Para Teléfonos Móviles --- */
-@media (max-width: 480px) {
-
-  /* Logo Responsivo */
-  .header-logo {
-    max-height: 80px; /* Ajustado por usuario */
-  }
-
-  /* Ajuste Video Hero Móvil (Contain) */
-  .hero-video {
-    /* Sobreescribimos para mostrar video completo */
-    width: 100%;     
-    height: 100%;    
-    object-fit: contain; /* Muestra video completo, puede dejar barras */
-    /* Anulamos min-width/min-height de la regla base si interfieren */
-    min-width: auto; 
-    min-height: auto;
-  }
-
-
-  /* Ajustes generales para móvil */
+  /* ============ ESTILOS BASE (CUERPO) ============= */
   body {
+    font-family: var(--font-principal);
+    background-color: var(--color-main-bg);
+    color: var(--color-main-text);
+    font-size: var(--font-size-p);
+    line-height: 1.5;
+  }
+  
+  /* ============ ESTILOS GENERALES ============= */
+  
+  /* Contenedores */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Títulos */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-alt);
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+  h4 {
+    font-size: var(--font-size-h4);
+  }
+  
+  /* Párrafos */
+  p {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Botones */
+  .btn {
+    background-color: var(--color-accent-2);
+    color: var(--color-main-bg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: var(--color-accent-1);
+  }
+  
+  /* Enlaces */
+  a {
+    color: var(--color-accent-2);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: var(--color-accent-1);
+  }
+  
+  /* Imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* ============ ESTILOS HEADER ============= */
+  header {
+    background-color: var(--color-main-bg);
+    padding: var(--spacing-md) 0;
+    position: relative;
+    z-index: 2000;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Logo */
+  .header-logo {
+    width: 200px;
+    cursor: pointer;
+  }
+  
+  /* Menú de navegación */
+  header nav ul {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+  }
+  
+  header nav ul li a {
+    color: var(--color-main-text);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 2px solid transparent;
+  }
+  
+  header nav ul li a:hover {
+    color: var(--color-accent-2);
+    border-bottom: 2px solid var(--color-accent-2);
+  }
+  
+  /* ============ ESTILOS HERO ============= */
+  .hero {
+    min-height: 600px;
+    width: 100%;
+    background-color: #555; /* Solo para pruebas */
+    background-image: url('img/hero-video-min.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-main-bg);
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Contenedor para el contenido del hero */
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    color: var(--color-main-bg);
+  }
+  
+  /* Botón en el Hero */
+  .hero .btn {
+    margin-top: var(--spacing-md);
+  }
+  
+  /* ============ ESTILOS SECCIONES ============= */
+  main section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    /* Seccion Base */
+  }
+  
+  /* Sección de sobre nosotros */
+  #sobre-nosotros {
+    background-color: var(--color-main-bg);
+    color: var(--color-main-text);
+  }
+  
+  /* Sección de galeria */
+  #galeria {
+    background-color: var(--color-main-bg);
+  }
+  
+  /* Sección de contacto */
+  #contacto {
+    background-color: var(--color-main-bg);
+  }
+  
+  /* ============ ESTILOS FOOTER ============= */
+  footer {
+    background-color: var(--color-main-text);
+    color: var(--color-main-bg);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+  }
+  
+  /* ============ ESTILOS DE FORMULARIO ============= */
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  /* Etiqueta */
+  form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  /* Campos de texto */
+  form input[type='text'],
+  form input[type='email'],
+  form textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  /* Campo de texto grande */
+  form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  /* Boton */
+  form .btn {
+    align-self: flex-start;
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  /* Error */
+  .error {
+    border-color: red;
+  }
+  
+  /* ============ SWIPER ============= */
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Flechas */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--color-main-text);
+  }
+  
+  /* Puntos */
+  .swiper-pagination-bullet-active {
+    background: var(--color-main-text);
+  }
+  /* ============ ESTILOS ADICIONALES ============= */
+  
+  /* Resaltado del link activo */
+  header nav ul li a.active-link {
+    color: var(--color-main-bg);
+    background-color: var(--color-accent-2);
+    border: none;
+  }
+  /* Error de formulario */
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: block;
+  }
+  /* Error de formulario en input */
+  .error {
+    border-color: red;
+  }
+  
+  /* ============ MEDIA QUERIES ============= */
+  
+  /* Media Query para Tablet (768px) */
+  @media (min-width: 768px) {
+    /* Ajustes generales para tablet */
+    body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  
+    .hero {
+      min-height: 500px;
+    }
+  }
+  
+  /* Media Query para Móvil (<= 767px) */
+  @media (max-width: 767px) {
+    /* Ocultar Nav base */
+    header nav ul {
+      display: none;
+    }
+    /* Estilos para la navegación activa (menú desplegable) */
+    header nav.mobile-nav-active ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #3b3028; /* Revertido a Marrón Oscuro */
+      padding: 1rem 0;
+      border-top: 1px solid #a04f33; /* Revertido a Terracota */
+      z-index: 1000;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra ajustada por usuario */
+      transform: translateY(-100%); /* Inicialmente oculto arriba */
+      transition: transform 0.3s ease-in-out; /* Transición de 0.3s al transform */
+    }
+    /* Menú desplegado */
+    header nav.mobile-nav-active ul.show {
+      transform: translateY(100%); /* Desplazado hacia abajo */
+    }
+    /* Color claro para links en menú desplegable */
+    header nav.mobile-nav-active ul li a {
+      padding: 0.5rem 1rem;
+      border-bottom: none;
+      color: #e0d6c1; /* Revertido a Beige claro */
+    }
+    /* Hover para links en menú desplegable (SIN fondo) */
+    header nav.mobile-nav-active ul li a:hover {
+      color: #c86442; /* Terracota más claro */
+    }
+    /* Icono Menu Movil */
+    #mobile-menu-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 2rem; /* Ajusta el tamaño del icono */
+      color: var(--color-main-text); /* Color del icono */
+      padding: 0;
+      display: block;
+    }
+  
+    /* Ajustes generales para móvil */
+    body {
       font-size: 15px;
-      line-height: 1.6; 
+      line-height: 1.6;
+    }
+    /* El color/tamaño del link en el menú activo se hereda de 768px */
+    header nav.mobile-nav-active ul li a {
+      font-size: 1rem;
+    }
+  
+    .hero {
+      /* Cambiamos min-height para aproximar proporción 4:3 */
+      min-height: 75vw; /* Alto = 75% del ancho de la ventana */
+      padding: 2rem 15px; /* Mantenemos padding */
+      /* El resto de estilos de .hero (display: flex, etc.) se heredan o no aplican aquí */
+    }
   }
-  /* El color/tamaño del link en el menú activo se hereda de 768px */
-  header nav.mobile-nav-active ul li a { 
-      font-size: 1rem; 
-  }
-
-  .hero {
-    /* Cambiamos min-height para aproximar proporción 4:3 */
-    min-height: 75vw; /* Alto = 75% del ancho de la ventana */ 
-    padding: 2rem 15px; /* Mantenemos padding */
-    /* El resto de estilos de .hero (display: flex, etc.) se heredan o no aplican aquí */
-}
-
-/* Asegúrate de que la regla para .hero-video DENTRO de esta misma 
-   media query todavía usa object-fit: contain */
-.hero-video {
-  position: absolute; /* Añadido para asegurar posicionamiento */
-  top: 50%;
-  left: 50%;
-  /* Combinamos translate para centrar y scale para zoom */
-  transform: translate(-50%, -50%) scale(1.4); /* AÑADIDO scale(1.1) */
-  width: 100%;     
-  height: 100%;    
-  object-fit: contain; /* Mantenemos contain */
-  min-width: auto; 
-  min-height: auto;
-  z-index: -1; /* Aseguramos z-index */
-}
-
-  .hero {
-      min-height: 30vh; /* Ajustado por usuario */
-      padding: 2rem 15px; /* Padding base móvil */
-  }
-  .hero h2 {
-      font-size: 2rem; 
-      line-height: 1.3; 
-  }
-  .hero p {
-      font-size: 1.1rem; 
-  }
-  .content-section {
-      padding: 2.5rem 0; 
-  }
-   .content-section h3 {
-      font-size: 1.6rem; 
-       margin-bottom: 2rem; 
-  }
-   .contact-info {
-       margin-top: 2.5rem;
-       padding-top: 1.5rem;
-   }
-  .contact-info p {
-       font-size: 1rem;
-       line-height: 1.7;
-   }
-   /* Footer styles already present outside media query */
-   /* footer { ... } */
-   /* footer p { ... } */
-
-   #contacto .form-group input[type="text"],
-   #contacto .form-group input[type="email"],
-   #contacto .form-group textarea {
-        padding: 10px; 
-   }
-    #contacto .btn {
-        padding: 10px;
-        font-size: 1rem;
-   }
-
-} /* Fin de @media (max-width: 480px) */
-
+  

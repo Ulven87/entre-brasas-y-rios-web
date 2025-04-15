@@ -1,6 +1,6 @@
 // Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM Cargado. Iniciando script v26 (ScrollMagic).');
+  console.log('DOM Cargado. Iniciando script v27 (ScrollMagic).');
 
   // --- Selecciones Comunes ---
   // CORREGIDO: Selector más específico basado en el HTML real
@@ -78,8 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- CÓDIGO PARA MENÚ MÓVIL ---
   if (mobileMenuButton && navElement) {
+    const menuUl = navElement.querySelector('ul'); // Selecciona el elemento <ul> del menú
     mobileMenuButton.addEventListener('click', function () {
       navElement.classList.toggle('mobile-nav-active');
+      // Añade o elimina la clase 'show' al elemento <ul> del menú
+      menuUl.classList.toggle('show');
       const isExpanded = navElement.classList.contains('mobile-nav-active');
       this.setAttribute('aria-expanded', isExpanded);
       this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
@@ -235,5 +238,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // --- FIN CÓDIGO PARA ACTUALIZAR EL AÑO ---
 
-  console.log('Script v26 inicializado completamente.');
+  console.log('Script v27 inicializado completamente.');
 }); // Fin del addEventListener('DOMContentLoaded')
