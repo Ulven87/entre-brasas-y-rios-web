@@ -499,19 +499,15 @@ footer p {
     font-size: 0.85rem;
 }
 
-/* Estilos para el menú de navegación en móvil */
+/* Estilos para el menú de navegación en móvil (fuera de la media query) */
 .mobile-nav-animation ul{
-    position: fixed;
-    top: -100%;
     width: 100%;
     transition: transform 0.3s ease-in-out;
     overflow: hidden;
 }
 .mobile-nav-animation.mobile-nav-active ul{
-    transform: translateY(100%);
-    background: #3b3028;
+    transform: translateY(0); /* Modificado: se muestra abajo */
 }
-
 
 @media (min-width: 1101px) { /* Usamos 1101px para asegurar que sea mayor a 1100px */
     .hero-video {
