@@ -570,7 +570,9 @@ footer p {
   /* Estilos para la navegación activa (menú desplegable) */
   /* Revertido a fondo oscuro y texto claro */
   header nav.mobile-nav-active ul {
-    display: flex; 
+    position: absolute;
+    top: 100%;
+    left: 0;
     flex-direction: column; 
     align-items: center;   
     left: 0;
@@ -586,6 +588,10 @@ footer p {
     padding: 0.5rem 1rem;
     border-bottom: none; 
     color: #e0d6c1; /* Revertido a Beige claro */
+  }
+
+  header.mobile-nav-active ~ main {
+    margin-top: 100px;
   }
   /* Hover para links en menú desplegable (SIN fondo) */
    header nav.mobile-nav-active ul li a:hover {
