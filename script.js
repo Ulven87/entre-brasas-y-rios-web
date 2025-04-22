@@ -79,13 +79,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- CÓDIGO PARA MENÚ MÓVIL ---
   if (mobileMenuButton && navElement) {
     mobileMenuButton.addEventListener('click', function () {
-      // Add the mobile-nav-animation class
-      navElement.classList.add('mobile-nav-animation');
-
       navElement.classList.toggle('mobile-nav-active');
 
-      //if is not mobile-nav-active, then remove mobile-nav-animation
-      if (!navElement.classList.contains('mobile-nav-active')){
+      // Add or remove the mobile-nav-animation class based on the presence of mobile-nav-active
+      if (navElement.classList.contains('mobile-nav-active')) {
+        navElement.classList.add('mobile-nav-animation');
+      } else {
         navElement.classList.remove('mobile-nav-animation');
       }
 
