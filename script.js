@@ -81,23 +81,23 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuButton.addEventListener('click', function () {
       navElement.classList.toggle('mobile-nav-active');
 
-      // Add or remove the mobile-nav-animation class based on the presence of mobile-nav-active
+      // Add or remove mobile-nav-animation class based on mobile-nav-active
       if (navElement.classList.contains('mobile-nav-active')) {
         navElement.classList.add('mobile-nav-animation');
       } else {
         navElement.classList.remove('mobile-nav-animation');
       }
-
-      const isExpanded = navElement.classList.contains('mobile-nav-active');
-      this.setAttribute('aria-expanded', isExpanded);
-      this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
-    });
-  } else {
-    if (!mobileMenuButton)
-      console.error('Error Crítico: Botón de menú móvil no encontrado.');
-    if (!navElement) console.error('Error Crítico: Elemento <nav> no encontrado.');
-  }
-  // --- FIN CÓDIGO PARA MENÚ MÓVIL ---
+  
+        const isExpanded = navElement.classList.contains('mobile-nav-active');
+        this.setAttribute('aria-expanded', isExpanded);
+        this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
+      });
+    } else {
+      if (!mobileMenuButton)
+        console.error('Error Crítico: Botón de menú móvil no encontrado.');
+      if (!navElement) console.error('Error Crítico: Elemento <nav> no encontrado.');
+    }
+    // --- FIN CÓDIGO PARA MENÚ MÓVIL ---
 
   // --- CÓDIGO PARA VALIDACIÓN DE FORMULARIO ---
   const contactForm = document.querySelector('form');
